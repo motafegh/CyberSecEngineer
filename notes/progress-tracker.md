@@ -14,10 +14,10 @@
 | Users & Groups | ✅ | Session 1 done |
 | Log Reading (auth.log) | ✅ | Session 1 done |
 | SUID/SGID binaries (find & exploit) | ✅ | Session 2 — `02-suid-sgid-deep-dive.md` |
-| Processes & Signals (ps, top, kill) | ⏳ | Session 2 |
-| Services & systemd (systemctl) | ⏳ | Session 2 |
-| Cron & Scheduling (crontab) | ⏳ | Session 2 |
-| SSH Key Auth | ⏳ | Session 2 |
+| Processes & Signals (ps, top, kill) | ✅ | Session 2 — `03-processes-complete.md` |
+| Cron & Scheduling (crontab) | ✅ | Session 2 — `03-processes-complete.md` |
+| Services & systemd (systemctl) | ⏳ | Session 2 (remaining) |
+| SSH Key Auth | ⏳ | Session 2 (remaining) |
 | Bash Scripting (vars, loops, conditions) | ⏳ | Session 3 |
 | **Bandit Levels 0-34** | ⏳ | Session 4 |
 | **System Auditor Script** | ⏳ | Build in Session 3 |
