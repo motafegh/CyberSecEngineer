@@ -52,11 +52,17 @@ Topics are chunked, never taught as one monolithic block.
 ## 4. Recall Sessions
 
 **Trigger** (any one of):
+- User explicitly says "recall" or "recap"
 - Start of a new phase.
 - Every 3–5 sessions.
 - Just-in-time, right before a new topic that depends on an older one — scope this case to just that dependency, not a full sweep.
 
-**Structure:**
+**Process:**
+When the user asks for recall/recap, first ask which format they want:
+- Option A: **Quick re-teach** — fast-forward summary of what was covered
+- Option B: **Questions** — quizzing to test memory (proceed to rounds below)
+
+**Structure (for Option B):**
 1. Pull candidate topics from `notes/progress-tracker.md` + the last several session plans.
 2. Round 1 — *Name it*: quick term/concept definitions, no notes open, no multiple choice.
 3. Round 2 — *Teach it back*: pick 1–2 heavier concepts, have them explain the full mechanism unaided, like they're teaching it to someone else.
