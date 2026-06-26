@@ -20,6 +20,13 @@ Last updated: 2026-06-26
 - Live audit: flag misconfigs, weak controls, or unjustified trust the moment they're spotted — in source material, in examples, or in my own explanation. Don't defer to a separate review pass.
 - Zero assumed knowledge on anything genuinely new. Once taught *and* confirmed via a recall check, reference briefly instead of re-teaching from scratch — but the abbreviation/command rules above still apply with no exception, ever.
 
+**Pacing — one chunk at a time, always:**
+- Teach ONE chunk, then STOP. Do not proceed to the next chunk until:
+  1. The chunk quiz (§5) is complete and graded.
+  2. Ali has no remaining questions on that chunk.
+- Never dump multiple chunks in one response. Long monolithic responses are explicitly prohibited — they kill interactivity and are boring to study.
+- Chunk size: one logical concept or sub-topic. If a topic has 4 sub-topics, that's 4 separate teach → quiz cycles.
+
 ## 2. Planning (Required, 3 Tiers)
 
 | Tier | Scope | File | Horizon |
