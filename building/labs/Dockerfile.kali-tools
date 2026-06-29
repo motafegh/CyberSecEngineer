@@ -1,0 +1,17 @@
+FROM kalilinux/kali-rolling
+
+RUN apt update && apt install -y \
+    nmap \
+    netcat-openbsd \
+    nikto \
+    gobuster \
+    sqlmap \
+    hydra \
+    john \
+    curl \
+    wget \
+    iproute2 \
+    dnsutils \
+    && rm -rf /var/lib/apt/lists/*
+
+CMD ["/bin/bash"]

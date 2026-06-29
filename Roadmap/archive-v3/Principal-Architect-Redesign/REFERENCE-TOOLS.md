@@ -1,6 +1,6 @@
 # Reference Tools
 
-> Canonical tool categories for the roadmap. Tools are not completion by themselves; they support hands-on exercises, evidence, and architecture work. Each tool is introduced only when the relevant phase needs it — see the phase file for the actual hands-on exercises that use it.
+> Tool categories for the redesigned roadmap. Tools are not completion by themselves; they support hands-on exercises, evidence, and architecture work.
 
 ---
 

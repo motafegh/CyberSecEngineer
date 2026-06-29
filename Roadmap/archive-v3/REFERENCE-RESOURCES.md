@@ -1,6 +1,6 @@
 # Reference Resources
 
-> Canonical resource categories for the roadmap. Prefer free, local-first, hands-on, and no-KYC resources where possible. Resources are introduced only when the relevant phase needs them — see the phase file for the actual hands-on exercises that use them.
+> Resource categories for the redesigned roadmap. Prefer free, local-first, hands-on, and no-KYC resources where possible.
 
 ---
 

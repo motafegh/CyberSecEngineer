@@ -1,10 +1,10 @@
 # AGENTS.md
 
-> Directives for AI agents in this repo (`CyberSecEngineer/`). Concise but complete — cut narrative, not behavior-defining detail. Humans: see `notes/` for actual content.
+> Directives for AI agents in this repo (`CyberSecEngineer/`). Concise but complete — cut narrative, not behavior-defining detail. Humans: see `learning/` and `building/` for actual content.
 >
-> **Build in parallel:** Every phase has a portfolio piece (SecAudit CLI, pentest reports, etc.). Scripts/tools get committed here alongside notes — don't separate learning from building.
+> **Build in parallel:** Every phase has a portfolio piece (SecAudit CLI, pentest reports, etc.). Scripts/tools live under `building/` and are committed here alongside learning notes under `learning/`. The split is top-level (learning vs building), not per-phase.
 
-Last updated: 2026-06-26
+Last updated: 2026-06-29 (session workflow expanded to explicit before/during/after with full bookkeeping)
 
 ## 1. Teaching Rules
 
@@ -32,29 +32,47 @@ Last updated: 2026-06-26
 | Tier | Scope | File | Horizon |
 |---|---|---|---|
 | Roadmap | Overall goal, phases | `Roadmap/ROADMAP-INDEX.md` (master) + per-phase files | Long-term (18 months) |
-| Phase Plan | Phase milestones | `notes/phase-*/00-plan.md` | Mid-term |
-| Session Plan | Single topic/tool | `notes/phase-*/session-XX-*.md` | Short-term |
+| Phase Plan | Phase milestones | `learning/phases/phase-N-*/PLAN.md` | Mid-term |
+| Session Plan | Single topic/tool | `learning/phases/phase-N-*/session-plans/session-NN-<topic>.md` | Short-term |
 
 Rules:
 - No session starts without a session plan existing. If missing, write it first.
 - Status format, used everywhere: `- [ ] item` (todo) / `- [x] item` (done) / `- [~] item — reason` (skipped/blocked).
-- Capstone/coding projects: own plan at `notes/projects/<name>-plan.md`, same status format, milestones instead of topics.
+- Capstones: own scaffolded directory at `building/capstones/phase-N-<capstone-name>/` with a README that mirrors `Roadmap/CAPSTONE-INDEX.md`. Status is tracked in the phase PLAN.md.
+- Standalone projects (e.g. tools, scripts): own plan at `building/projects/<name>/README.md`, same status format, milestones instead of topics.
 - Update status live during the session, not retroactively.
-- Postponed items also logged in `notes/progress-tracker.md` with reason.
+- Postponed items also logged in `learning/progress-tracker.md` with reason.
 
 ## 3. Session Workflow
 
-Topics are chunked, never taught as one monolithic block.
+Topics are chunked, never taught as one monolithic block. Every session goes through three phases: **before** (scope and plan), **during** (teach and capture), **after** (notes and bookkeeping). Do not skip the after phase.
+
+### Before
 
 0. **Pre-check** — if a recall trigger is due (§4), run it before touching new material.
-1. Confirm/write the session plan; split the topic into logical chunks up front.
-2. Per chunk:
-   - Link it: 1 sentence connecting to something already taught; 1 sentence preview if it sets up something later.
-   - Teach interactively — back-and-forth, debate, pushback welcome — until the person can explain the chunk back unprompted, not just agree it makes sense.
-   - Quiz the chunk (§5) before moving to the next one.
-3. After all chunks: write the full note → `notes/phase-*/`, covering the whole topic, not fragments.
-4. Update session-plan item statuses; log any postponed item in `notes/progress-tracker.md` with reason.
-5. Close with a 1-line recap: what was covered, what's flagged for the next recall.
+1. **Confirm scope** — read the relevant section of `Roadmap/PHASE-N-*.md`, open `learning/phases/phase-N-*/PLAN.md` to confirm the modules you committed to cover, and pick the chunks that fit this session. PLAN.md is the scope contract; the roadmap is the source.
+2. **Write the session plan** — create or open `learning/phases/phase-N-*/session-plans/session-NN-<topic>.md`. Pull only the roadmap chunks this session will cover; split the topic into logical chunks up front. If the session plan does not exist, write it first — no session starts without one.
+
+### During
+
+3. **Per chunk:**
+   - **Link it**: 1 sentence connecting to something already taught; 1 sentence preview if it sets up something later.
+   - **Teach interactively** — back-and-forth, debate, pushback welcome — until the person can explain the chunk back unprompted, not just agree it makes sense.
+   - **Quiz the chunk** (§5) before moving to the next one.
+4. **Capture evidence** during the session — commands, raw output, screenshots, configs → save to `learning/phases/phase-N-*/evidence/`. Dated filename. Do not let evidence live only in chat.
+
+### After
+
+5. **Write the post-session note** — one file per topic in `learning/phases/phase-N-*/notes/<topic>.md`, covering the whole topic, not fragments. Cross-link the evidence files.
+6. **Update session-plan item statuses** in `session-plans/session-NN-<topic>.md` (live during the session, not retroactively). Mark the session plan itself as `[x]` done once the note is written.
+7. **Bookkeeping** — all of these, every session:
+   - Tick the matching box in `learning/progress-tracker.md`.
+   - If a corrected belief surfaced, add an entry to `learning/mistakes/phase-N.md` (see `Roadmap/MISTAKE-LOG-SYSTEM.md`).
+   - Append a one-paragraph log to `learning/session-records/SESSION-NNN.md` (or create the next one if this is a new session).
+   - If the session closes a phase-level outcome, update `PLAN.md` (PLAN.md is updated at phase transitions and major milestones, not per-session).
+   - If the session produced capstone work, update the relevant `building/capstones/phase-N-*/` README.
+   - Log any postponed item in `learning/progress-tracker.md` with reason.
+8. **Recap** — 1 line: what was covered, what's flagged for the next recall.
 
 ## 4. Recall Sessions
 
@@ -70,11 +88,11 @@ When the user asks for recall/recap, first ask which format they want:
 - Option B: **Questions** — quizzing to test memory (proceed to rounds below)
 
 **Structure (for Option B):**
-1. Pull candidate topics from `notes/progress-tracker.md` + the last several session plans.
+1. Pull candidate topics from `learning/progress-tracker.md` + the last several session plans.
 2. Round 1 — *Name it*: quick term/concept definitions, no notes open, no multiple choice.
 3. Round 2 — *Teach it back*: pick 1–2 heavier concepts, have them explain the full mechanism unaided, like they're teaching it to someone else.
 4. Round 3 — *Connect it*: one scenario question requiring 2+ past concepts combined — tests integration, not just memorization.
-5. Score honestly. Gaps get logged in `notes/progress-tracker.md` as `recall gap — <reason>`. If a gap sits on the critical path for the next topic, fix it with a short re-teach before new material continues; otherwise queue it.
+5. Score honestly. Gaps get logged in `learning/progress-tracker.md` as `recall gap — <reason>`. If a gap sits on the critical path for the next topic, fix it with a short re-teach before new material continues; otherwise queue it.
 
 ## 5. Quiz Format
 
@@ -85,14 +103,23 @@ When the user asks for recall/recap, first ask which format they want:
 
 ## 6. Repo Structure
 - `Roadmap/` — phase files, reference docs (source of truth for what to learn)
-- `notes/phase-*/` — learning notes
-- `notes/tools/cheatsheets/` — command refs
-- `notes/ctf-writeups/` — writeups
-- `notes/projects/` — capstone/tool plans
-- `notes/progress-tracker.md` — master status of everything
-- `labs/` — Docker compose files, lab configs
-- `projects/` — scripts, tools, portfolio pieces (built alongside learning)
-- `sentinel/` — SENTINEL project (existing)
+- `learning/` — all learning artifacts (read, study, plan, take notes on)
+  - `learning/phases/phase-N-*/PLAN.md` — phase plan
+  - `learning/phases/phase-N-*/session-plans/session-NN-*.md` — per-session plan (write BEFORE the session)
+  - `learning/phases/phase-N-*/notes/<topic>.md` — post-session learning notes
+  - `learning/phases/phase-N-*/evidence/` — raw outputs (logs, pcap, screenshots, configs)
+  - `learning/cheatsheets/` — command refs
+  - `learning/ctf-writeups/` — writeups
+  - `learning/research/` — vulnerability research, findings, reports
+  - `learning/mistakes/phase-N.md` — per-phase misconception logs (see `Roadmap/MISTAKE-LOG-SYSTEM.md`)
+  - `learning/session-records/SESSION-NNN.md` — time-ordered log of every session
+  - `learning/progress-tracker.md` — master status of everything
+- `building/` — all building artifacts (build, deploy, ship)
+  - `building/capstones/phase-N-<name>/` — one per phase, mirrors `Roadmap/CAPSTONE-INDEX.md`
+  - `building/projects/<name>/` — standalone portfolio pieces
+  - `building/labs/` — Docker compose files, lab configs
+  - `building/portfolio/` — public READMEs, resume, blog posts
+  - `building/threat-models/` — cross-phase threat models
 - Commit + push regularly.
 - Critical concepts tagged **⚠️ CRITICAL**.
 

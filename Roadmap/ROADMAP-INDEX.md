@@ -1,183 +1,116 @@
-# Cybersecurity Career Roadmap v2 — Master Index
+# Cybersecurity Career Roadmap v3 — Principal Secure Distributed Systems Architect
 
-> **Local-first · Free · No KYC · No Subscriptions**  
-> **Background:** Intermediate — ML, Deep Learning, Solidity, AI/LLMs  
-> **Target:** First AI/ML/LLM/Security role in 3–4 months  
+> **Target Role:** Principal Secure Distributed Systems Architect  
+> **Focus Areas:** Blockchain and Web3 Security Architecture · AI-Driven Security and AI System Security · Zero Trust Networks · Cloud-Native and Distributed Platform Security · Secure Architecture Leadership
+>
+> This roadmap is quality-gated, security-centered, hands-on, and designed for long-term retention. Fixed timelines are replaced by evidence-based exit criteria.
 
 ---
 
-## Your Starting Position
+## Design Principles
 
-| Skill You Have | What It Unlocks |
-|---|---|
-| Solidity | Skip to smart contract vulnerability classes directly |
-| ML / Deep Learning | Adversarial ML and AI red-teaming from month 7 |
-| Python | No language barrier — only security libraries to learn |
-| LLM knowledge | Prompt injection, jailbreak research, OWASP LLM Top 10 |
-| SENTINEL project | Deployable portfolio piece from day one |
+- **Security is the dominant lens** across all phases — every topic includes attack, defense, detection, and architecture.
+- **Every important concept gets hands-on practice** — no topic is left as passive reading.
+- **Rust and Go are first-class languages** for blockchain and distributed systems. Python remains core for security automation and AI workflows. Solidity matters for Ethereum smart contract security, but blockchain is not reduced to Solidity.
+- **Foundations are protected** from being skipped or downweighted even when they are not directly in the final role title.
+- **Neuroscience-informed learning** — retrieval, spacing, interleaving, generation, teach-back, and error tracking are built into every phase.
+- **Quality gates replace timelines** — progress is measured by capability evidence, not calendar months.
+- **Job-hunt material** becomes evidence-quality guidance without deadline pressure.
 
 ---
 
 ## Roadmap Overview
 
-```
-Phase 0   Weeks 1–2     Lab Setup
-Phase 1   Months 1–3    Foundations
-Phase 2   Months 3–7    Core Attack & Defense
-Phase 3   Months 7–14   Specializations (4 parallel tracks)
-Phase 4   Months 14–18  Portfolio & Job Hunt
+```text
+Phase 0   Secure Lab and Cyber Range         Build the local environment
+Phase 1   Deep Technical Foundations          OS, networking, crypto, programming, threat modeling
+Phase 2   Core Security Engineering           Web, API, code review, supply chain, detection, IR
+Phase 3   Distributed, Cloud, Zero Trust      Services, K8s, mTLS, policy-as-code, observability
+Phase 4   Blockchain and Web3 Architecture    Protocols, consensus, bridges, smart contracts
+Phase 5   AI Security and AI-Driven Defense   Adversarial ML, LLM security, AI security operations
+Phase 6   Principal Secure Architecture       Reference architectures, synthesis, leadership
 ```
 
 ---
 
 ## Phase Files
 
-### Phase 0 — Lab Setup
-**[PHASE-0-LAB-SETUP.md](PHASE-0-LAB-SETUP.md)**
-
-- VirtualBox/QEMU + Kali Linux + target VMs
-- Network architecture (NAT + Host-Only isolation)
-- Windows Server 2019 + Windows 10 for AD track
-- Docker for web app labs
-- Obsidian + git-based note-taking system
-
----
-
-### Phase 1 — Foundations
-**[PHASE-1-FOUNDATIONS.md](PHASE-1-FOUNDATIONS.md)**
-
-| Module | Duration | Topics |
+| Phase | File | Purpose |
 |---|---|---|
-| Linux | ~3 weeks | FHS, permissions, bash scripting, OverTheWire Bandit |
-| Networking | ~3 weeks | OSI 7 layers, TCP/IP, Wireshark, packet analysis |
-| Cryptography | ~2 weeks | AES/RSA, hashing, password cracking, TLS, CryptoPals |
-| Python for Security | ~2 weeks | Socket programming, scapy, tool building from scratch |
-| Threat Modeling | ~1 week | STRIDE, PASTA, attack trees, DREAD scoring |
-
-**Capstone:** SecAudit CLI — comprehensive Python security reconnaissance tool
-
----
-
-### Phase 2 — Core Attack & Defense
-**[PHASE-2-CORE-ATTACK-DEFENSE.md](PHASE-2-CORE-ATTACK-DEFENSE.md)**
-
-| Module | Duration | Topics |
-|---|---|---|
-| Web Application Security | ~4 weeks | OWASP Top 10, SQLi, XSS, IDOR, PortSwigger |
-| API Security | ~2 weeks | REST/GraphQL/gRPC, BOLA/BFLA, OWASP API Top 10 |
-| Network Penetration Testing | ~3 weeks | nmap deep, VulnHub machines, methodology |
-| Exploitation Fundamentals | ~3 weeks | Metasploit, privesc, Linux paths, LOLBins |
-| Binary Exploitation (Intro) | ~3 weeks | Stack overflow, mitigations, pwntools, pwn.college |
-| Reverse Engineering (Intro) | ~2 weeks | Ghidra, assembly, crackmes, static analysis |
-| Secure Code Review | ~2 weeks | Taint analysis, Semgrep, secret scanning, audit reports |
-| Defensive Security / Blue Team | ~2 weeks | SIEM/Wazuh, detection rules, MITRE ATT&CK |
-
-**Capstone:** Full penetration test report on a VulnHub machine
+| 0 | [PHASE-0-SECURE-LAB.md](PHASE-0-SECURE-LAB.md) | Build a secure, isolated, reproducible local cyber range. |
+| 1 | [PHASE-1-DEEP-FOUNDATIONS.md](PHASE-1-DEEP-FOUNDATIONS.md) | Deep foundations: Linux, networking, crypto, Python, Go, Rust, threat modeling. |
+| 2 | [PHASE-2-CORE-SECURITY-ENGINEERING.md](PHASE-2-CORE-SECURITY-ENGINEERING.md) | Web/API security, code review, supply chain, binary exploitation, detection, SSDLC. |
+| 3 | [PHASE-3-DISTRIBUTED-CLOUD-ZEROTRUST.md](PHASE-3-DISTRIBUTED-CLOUD-ZEROTRUST.md) | Distributed systems, containers, Kubernetes, mTLS, policy-as-code, Zero Trust, observability. |
+| 4 | [PHASE-4-BLOCKCHAIN-WEB3-SECURITY-ARCHITECTURE.md](PHASE-4-BLOCKCHAIN-WEB3-SECURITY-ARCHITECTURE.md) | Blockchain protocols, consensus, validators, bridges, wallets, governance, MEV. |
+| 5 | [PHASE-5-AI-SECURITY-AI-DRIVEN-DEFENSE.md](PHASE-5-AI-SECURITY-AI-DRIVEN-DEFENSE.md) | Adversarial ML, LLM security, RAG, model supply chain, AI-driven detection and triage. |
+| 6 | [PHASE-6-PRINCIPAL-SECURE-ARCHITECTURE.md](PHASE-6-PRINCIPAL-SECURE-ARCHITECTURE.md) | Reference architectures, advanced threat modeling, governance, incident-ready architecture, leadership communication. |
 
 ---
 
-### Phase 3 — Specializations (4 Parallel Tracks)
-
-| Day | Track | File |
-|---|---|---|
-| Monday | Track A — Web3 & Smart Contract Security | [PHASE-3-TRACK-A-WEB3.md](PHASE-3-TRACK-A-WEB3.md) |
-| Tuesday | Track B — AI/ML Security | [PHASE-3-TRACK-B-AI-ML.md](PHASE-3-TRACK-B-AI-ML.md) |
-| Wednesday | Track C — Cloud Security | [PHASE-3-TRACK-C-CLOUD.md](PHASE-3-TRACK-C-CLOUD.md) |
-| Thursday | Track D — Windows & Active Directory | [PHASE-3-TRACK-D-WINDOWS-AD.md](PHASE-3-TRACK-D-WINDOWS-AD.md) |
-| Friday | Competitive audit / CTF / write-ups | See capstones in each track file |
-| Saturday | Deep work on whichever track has an active project | — |
-| Sunday | Documentation, GitHub, review | — |
-
----
-
-### Phase 4 — Portfolio & Job Hunt
-**[PHASE-4-PORTFOLIO-JOB-HUNT.md](PHASE-4-PORTFOLIO-JOB-HUNT.md)**
-
-- Portfolio requirements & required pieces
-- Visibility strategy (no KYC)
-- Target roles by fit
-- Target employers for your profile
-- Interview preparation by role (5 role types)
-
----
-
-## Reference Files
-
-| File | Contents |
-|---|---|
-| **[REFERENCE-TOOLS.md](REFERENCE-TOOLS.md)** | All tools organized by category — foundations, scanning, web/API attack, exploitation, post-exploitation, smart contract, AI/ML, cloud, secrets scanning, defense/monitoring |
-| **[REFERENCE-RESOURCES.md](REFERENCE-RESOURCES.md)** | All free hands-on labs, references, and the 18-step priority order for when time is limited |
-
----
-
-## AI Assistant
+## Cross-Cutting Files
 
 | File | Purpose |
 |---|---|
-| **[CUSTOM-INSTRUCTIONS.md](CUSTOM-INSTRUCTIONS.md)** | Optimized system prompt for your AI pair programmer, teacher, and mentor |
+| [ARCHITECTURE-SPINE.md](ARCHITECTURE-SPINE.md) | Architecture reasoning framework applied in every phase. |
+| [CAPSTONE-INDEX.md](CAPSTONE-INDEX.md) | Central index of all major hands-on deliverables across phases. |
+| [MISTAKE-LOG-SYSTEM.md](MISTAKE-LOG-SYSTEM.md) | How misconception tracking works; source of truth for the `mistakes/` directory. |
+| [PORTFOLIO-STRATEGY.md](PORTFOLIO-STRATEGY.md) | Which capstones become public portfolio pieces and how to frame them. |
+| [REFERENCE-TOOLS.md](REFERENCE-TOOLS.md) | Tool categories with usage documentation rules. |
+| [REFERENCE-RESOURCES.md](REFERENCE-RESOURCES.md) | Free, local-first resource library. |
+| [REFERENCE-ARCHITECTURES.md](REFERENCE-ARCHITECTURES.md) | Architecture patterns to build, attack, defend, and adapt. |
 
 ---
 
 ## File Dependency Map
 
-```
+```text
 ROADMAP-INDEX.md
-├── PHASE-0-LAB-SETUP.md
-│   └── (required by all other phase files)
-├── PHASE-1-FOUNDATIONS.md
-│   ├── REFERENCE-TOOLS.md
-│   ├── REFERENCE-RESOURCES.md
-│   └── (required by Phase 2)
-├── PHASE-2-CORE-ATTACK-DEFENSE.md
-│   ├── REFERENCE-TOOLS.md
-│   ├── REFERENCE-RESOURCES.md
-│   └── (required by all Phase 3 tracks)
-├── PHASE-3-TRACK-A-WEB3.md ──┐
-├── PHASE-3-TRACK-B-AI-ML.md ──┼── (all run in parallel)
-├── PHASE-3-TRACK-C-CLOUD.md ──┤
-├── PHASE-3-TRACK-D-WINDOWS-AD.md┘
-│   └── REFERENCE-TOOLS.md, REFERENCE-RESOURCES.md
-├── PHASE-4-PORTFOLIO-JOB-HUNT.md
-│   └── (pulls from all previous phases)
+├── ARCHITECTURE-SPINE.md
+├── CAPSTONE-INDEX.md
+├── MISTAKE-LOG-SYSTEM.md
+├── PORTFOLIO-STRATEGY.md
+├── PHASE-0-SECURE-LAB.md
+│   └── required by all later phases
+├── PHASE-1-DEEP-FOUNDATIONS.md
+│   └── required by Phase 2
+├── PHASE-2-CORE-SECURITY-ENGINEERING.md
+│   └── required by Phases 3–6
+├── PHASE-3-DISTRIBUTED-CLOUD-ZEROTRUST.md
+│   └── required by Phases 4–6
+├── PHASE-4-BLOCKCHAIN-WEB3-SECURITY-ARCHITECTURE.md
+│   └── required by Phase 6
+├── PHASE-5-AI-SECURITY-AI-DRIVEN-DEFENSE.md
+│   └── required by Phase 6
+├── PHASE-6-PRINCIPAL-SECURE-ARCHITECTURE.md
 ├── REFERENCE-TOOLS.md
 ├── REFERENCE-RESOURCES.md
-└── CUSTOM-INSTRUCTIONS.md
+└── REFERENCE-ARCHITECTURES.md
 ```
 
 ---
 
-## Quick-Reference: Exit Criteria Summary
+## Quality Gate Summary
 
-### Phase 1 Exit
-- OverTheWire Bandit 34 levels complete
-- Explain OSI 7 layers with real attack examples
-- Extract credentials from FTP/HTTP captures in Wireshark
-- Explain MD5 password storage dangers with specific attack
-- Produce STRIDE threat model for a simple application
-- SecAudit CLI published on GitHub
+Each phase requires:
 
-### Phase 2 Exit
-- Rooted Metasploitable 2 via 3+ attack paths
-- PortSwigger: all SQLi, Authentication, XSS, Access Control labs
-- Deployed and exploited crAPI locally
-- 3 binary exploitation CTFs with published write-ups
-- 3 crackme binaries reversed with Ghidra
-- Manual code review on open-source app with report
-- 5 custom Wazuh detection rules written
-- Phase 2 capstone pentest report published
+| Evidence Type | Required |
+|---|---|
+| Hands-on exercises for every important concept | Yes |
+| Attack/defense pairing for security topics | Yes |
+| Detection and telemetry artifacts | Yes |
+| Architecture diagrams and trust boundaries | Yes |
+| Architecture Decision Records | Yes |
+| Threat models | Yes |
+| Recall checks without notes | Yes |
+| Mistake log and misconception tracking | Yes |
 
-### Phase 3 Exit
-- Track A: 1 competitive audit submitted + 1 self-directed protocol audit + SENTINEL extended
-- Track B: Adversarial attack on SENTINEL documented + LLM red team suite published + full AI red team report
-- Track C: Cloud misconfiguration lab published + cloud assessment report
-- Track D: Complete AD attack chain zero-to-DA documented + hardening report
-
-### Phase 4 Exit
-- GitHub: 12+ months of consistent commits, 6 pinned repos
-- All required portfolio pieces published
-- 2+ technical blog posts
-- Applications sent to target employers
+No concept is complete after reading alone.
 
 ---
 
-*v2 — Local-first · Free · No KYC · No Subscriptions*
+## Old Roadmap Archive
+
+Earlier roadmap versions are preserved for reference at [archive-v2/](archive-v2/) and [archive-v3/](archive-v3/). The current roadmap above supersedes them.
+---
+
+
