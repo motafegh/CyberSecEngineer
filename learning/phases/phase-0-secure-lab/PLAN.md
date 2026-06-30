@@ -13,26 +13,30 @@ Build a safe, local, repeatable environment for every later exercise: offensive 
 ## Required Outcomes (from roadmap)
 
 - [ ] Every core lab zone is built.
-- [ ] Network isolation is verified.
+- [~] Network isolation is verified — Docker only; VM isolation deferred
 - [ ] Vulnerable systems cannot reach real local devices.
-- [ ] Clean snapshots or rebuild paths exist.
+- [~] Clean snapshots or rebuild paths exist — Docker containers (auto-clean with --rm)
 - [ ] Documentation system exists.
-- [ ] Evidence handling process exists.
+- [x] Evidence handling process exists — evidence directory created, first evidence saved
 - [ ] Architecture diagrams exist.
 - [ ] Lab threat model exists.
-- [ ] Safety rules are written.
+- [x] Safety rules are written — HOST-SAFETY-CHECKLIST.md created
 - [ ] Explain the full lab architecture and Lab Extension Protocol without notes.
 
 ## Modules (from roadmap)
 
 | # | Module | Notes file | Session plan |
 |---|---|---|---|
-| 0.1 | Host Workstation Safety | `notes/01-host-safety.md` | `session-plans/session-NN-*.md` |
-| 0.2 | Virtualization and Isolation | `notes/02-virtualization.md` | `session-plans/session-NN-*.md` |
-| 0.3 | Linux Attack and Defense Workstation | `notes/03-kali-workstation.md` | `session-plans/session-NN-*.md` |
-| 0.4 | Vulnerable Target Zone | `notes/04-target-zone.md` | `session-plans/session-NN-*.md` |
-| 0.5 | Telemetry and Evidence Zone | `notes/05-telemetry.md` | `session-plans/session-NN-*.md` |
-| 0.6 | Documentation System | `notes/06-documentation.md` | `session-plans/session-NN-*.md` |
+| # | Module | Status | Notes file | Session plan |
+|---|---|---|---|---|---|
+| # | Module | Status | Notes file | Session plan |
+|---|---|---|---|---|---|
+| 0.1 | Host Workstation Safety | ✅ | `notes/01-host-safety.md` | `session-plans/session-01-host-safety.md` |
+| 0.2 | Virtualization and Isolation | ✅ | `notes/01-host-safety.md` (combined) | `session-plans/session-01-host-safety.md` |
+| 0.3 | Linux Attack and Defense Workstation | ⏳ | — | — |
+| 0.4 | Vulnerable Target Zone | ⏳ | — | — |
+| 0.5 | Telemetry and Evidence Zone | ⏳ | — | — |
+| 0.6 | Documentation System | ⏳ | — | — |
 
 ## Mini Projects (from roadmap §14)
 

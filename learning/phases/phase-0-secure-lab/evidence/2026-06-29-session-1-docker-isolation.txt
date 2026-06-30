@@ -1,0 +1,58 @@
+Evidence: Docker Isolation Tests — Session 1 (2026-06-29)
+
+============================================================
+ENVIRONMENT
+============================================================
+OS: Ubuntu 24.04.4 LTS (WSL2)
+Kernel: 6.18.33.2-microsoft-standard-WSL2
+Docker: 29.5.3
+Platform: WSL2 on Windows, Docker Desktop
+
+============================================================
+COMMAND: Create isolated networks
+============================================================
+$ docker network create --driver bridge --internal lab-net-internal
+4128eab6f097278b93874508f19275111efdfaa051b766fd4bd47c9f793d505d
+
+$ docker network create lab-net-nat
+9cc84db88533bb937381d344f48bb7cd461f93106ecaf62e06fd215e24a4c6da
+
+============================================================
+TEST 1: Internet blocked on --internal network
+============================================================
+$ docker run --rm -it --network lab-net-internal alpine sh
+/ # ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8): 56 data bytes
+ping: sendto: Network unreachable
+
+RESULT: Network unreachable — --internal flag blocks outbound internet ✓
+
+============================================================
+TEST 2: Container-to-container on same internal network
+============================================================
+$ docker run --rm -d --name server1 --network lab-net-internal alpine sleep 300
+a6f5f78af27fc3c3e9404058e6980ff65d08ee8531438c18f0a14362f53ea666
+
+$ docker run --rm -it --network lab-net-internal alpine sh
+/ # ping server1
+PING server1 (172.19.0.2): 56 data bytes
+64 bytes from 172.19.0.2: seq=0 ttl=64 time=0.070 ms
+64 bytes from 172.19.0.2: seq=1 ttl=64 time=0.055 ms
+64 bytes from 172.19.0.2: seq=2 ttl=64 time=0.062 ms
+64 bytes from 172.19.0.2: seq=3 ttl=64 time=0.055 ms
+64 bytes from 172.19.0.2: seq=4 ttl=64 time=0.060 ms
+64 bytes from 172.19.0.2: seq=5 ttl=64 time=0.070 ms
+^C
+--- server1 ping statistics ---
+6 packets transmitted, 6 packets received, 0% packet loss
+round-trip min/avg/max = 0.055/0.062/0.070 ms
+
+RESULT: 0% packet loss — containers reach each other by DNS name ✓
+
+============================================================
+CONCLUSION
+============================================================
+Docker --internal network isolation works as expected:
+- Internet: blocked
+- Container-to-container: allowed via DNS
+- The --internal flag is sufficient for isolating vulnerable targets

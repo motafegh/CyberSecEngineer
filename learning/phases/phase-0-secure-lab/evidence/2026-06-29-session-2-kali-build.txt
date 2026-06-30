@@ -1,0 +1,57 @@
+Session 2 Evidence — Kali Attack Workstation Build
+Date: 2026-06-29
+========================================
+
+1. BUILD LOG — docker build WITHOUT --network host
+   Failed at ~300s — apt mirrors timed out for 200+ packages
+   Key lines:
+   Ign:279 http://http.kali.org/kali kali-rolling/main amd64 libopenjp2-7 amd64 2.5.4-1.1
+   Err:281 http://http.kali.org/kali kali-rolling/main amd64 librav1e0.8 amd64 0.8.1-10
+   Unable to connect to http.kali.org:80: [IP: 54.39.128.230 80]
+   Summary: 564 MB fetched, remaining packages timed out
+
+2. BUILD LOG — docker build WITH --network host (without msf)
+   Success in 318s
+   All 469 packages downloaded successfully except metasploit-framework
+   Key line for msf failure:
+   Err:443 http://eu.mirror.ionos.com/kali ... metasploit-framework_6.4.135-0kali1_amd64.deb
+   Connection failed [IP: 217.72.206.21 80]
+
+3. GEM INSTALL FAILURE
+   gem install metasploit-framework → "128 gems installed"
+   BUT metasploit-framework-6.0.33 directory was EMPTY:
+   total 8
+   drwxr-xr-x 2 root root 4096 .  
+   drwxr-xr-x 130 root root 4096 ..
+   0 files extracted for main package
+
+4. RAPID7 APT REPO GPG FAILURE
+   First try: bash: gpg: command not found
+   Second try (after installing gpg):
+   Err: https://apt.metasploit.com lucid InRelease
+   Sub-process /usr/bin/sqv returned an error code (1)
+   Failed to parse keyring "/usr/share/keyrings/metasploit-framework.gpg"
+   No such file or directory
+
+5. DIRECT DEB DOWNLOAD FAILURE
+   curl -L -o /tmp/msf.deb https://github.com/...deb
+   Downloaded 9 bytes only (not a valid deb)
+   dpkg: error: unexpected end of file in archive
+
+6. GIT CLONE + BUNDLE INSTALL (WORKED)
+   git clone --depth 1 https://github.com/rapid7/metasploit-framework /opt/metasploit-framework
+   
+   First bundle install failures:
+   a) psych: yaml.h not found → apt install libyaml-dev
+   b) fiddle: missing libffi → apt install libffi-dev
+   c) pg: Can't find libpq-fe.h → apt install libpq-dev
+   d) xmlrpc: Could not find xmlrpc-0.3.3.gem → gem install xmlrpc -v 0.3.3
+
+   Final: Bundle complete! 20 Gemfile dependencies, 250 gems now installed
+
+7. FINAL VERIFICATION
+   msfconsole --version → Framework Version: 6.4.142-dev
+
+8. IMAGES CREATED
+   kali-lab:latest     → 2.53 GB (from Dockerfile, no msf)
+   kali-lab:with-msf   → 3.51 GB (committed with full msf)

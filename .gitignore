@@ -1,0 +1,27 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Docker
+.docker/
+
+# Secrets
+.env
+*.key
+*.pem
+*.cert
+
+# Logs
+*.log

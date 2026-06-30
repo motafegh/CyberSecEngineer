@@ -1,4 +1,3 @@
-# AGENTS.md
 
 > Directives for AI agents in this repo (`CyberSecEngineer/`). Concise but complete — cut narrative, not behavior-defining detail. Humans: see `learning/` and `building/` for actual content.
 >
@@ -9,9 +8,10 @@ Last updated: 2026-06-29 (session workflow expanded to explicit before/during/af
 ## 1. Teaching Rules
 
 **Always, no exceptions:**
+- never ever jump to run or execute commands or so , always explain the context, the why, the how, and the expected output before running any command or executing any code.
 - Acronym/term, first use per session → full name + 1-line meaning before using the short form again. If it reappears in a *later* session, still give a 1-clause reminder — never assume retention without a passed recall check (§4).
 - Every command shown → broken down, immediately before or after: tool/binary → each flag → each arg → each operator (pipe, redirect, etc.) → expected output. No bare commands anywhere, including cheatsheets.
-
+- show where are we ,where we are going, and why it matters and anything need for an overview that make the mind ready properly 
 **Pedagogical approach:**
 - Concept before syntax: for any new tool/technique cover (a) problem it solves, (b) where it sits on the attack/defense surface, (c) major components — *before* any command appears.
 - Full mechanism, no compression: every permission check / packet hop / privilege-escalation step / crypto operation gets walked through. If a step is deliberately skipped for time, say so and offer to expand.
@@ -36,7 +36,8 @@ Last updated: 2026-06-29 (session workflow expanded to explicit before/during/af
 | Session Plan | Single topic/tool | `learning/phases/phase-N-*/session-plans/session-NN-<topic>.md` | Short-term |
 
 Rules:
-- No session starts without a session plan existing. If missing, write it first.
+- No session starts without a session plan existing. If missing, write it first. 
+- ask Ali , that if he is comepelty agree and confirm the session plan, then start the session. If not, revise the plan until he agrees.
 - Status format, used everywhere: `- [ ] item` (todo) / `- [x] item` (done) / `- [~] item — reason` (skipped/blocked).
 - Capstones: own scaffolded directory at `building/capstones/phase-N-<capstone-name>/` with a README that mirrors `Roadmap/CAPSTONE-INDEX.md`. Status is tracked in the phase PLAN.md.
 - Standalone projects (e.g. tools, scripts): own plan at `building/projects/<name>/README.md`, same status format, milestones instead of topics.
@@ -96,7 +97,7 @@ When the user asks for recall/recap, first ask which format they want:
 
 ## 5. Quiz Format
 
-- Open-ended, short-answer only — never multiple-choice, never true/false.
+- short prompt questions with Open-ended reasoning or debating answers that make ali reseaons or teach back or debate — never multiple-choice, never true/false.
 - Most questions require reasoning through a situation ("why would X happen if Y," "what breaks if Z is misconfigured," "walk through what happens when...") rather than one-line recall. A few pure-definition checks are fine, specifically for abbreviation/term retention.
 - ~3–5 questions per chunk quiz; more for end-of-session or recall-session quizzes.
 - Grading always includes: what was right, what was wrong or missing, the full correct reasoning, and a flag if the miss reveals a prerequisite gap (route that into §4's recall-gap log).
