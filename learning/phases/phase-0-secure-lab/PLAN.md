@@ -31,11 +31,13 @@ Build a safe, local, repeatable environment for every later exercise: offensive 
 | 0.1 | Host Workstation Safety | ✅ | `notes/01-host-safety.md` | `session-plans/session-01-host-safety-and-isolation.md` |
 | 0.2 | Virtualization and Isolation | ✅ | `notes/02-network-isolation.md` | `session-plans/session-01-host-safety-and-isolation.md` |
 | 0.3 | Linux Attack/Defense Workstation | ✅ | `notes/03-kali-build-trial-and-error.md`, `notes/04-docker-deep-dive-images-layers-caching.md`, `notes/05-docker-build-strategies-complete-guide.md`, `notes/06-current-lab-state-and-architecture.md` | `session-plans/session-02-kali-and-targets.md`, `session-plans/session-03-review-and-targets.md` |
-| 0.4 | Vulnerable Target Zone | 🔄 | `notes/07-nmap-reconnaissance.md`, `notes/08-target-deployment-and-isolation.md` | `session-plans/session-03-review-and-targets.md` |
-| 0.5 | Telemetry and Evidence Zone | ✅ | `notes/09-telemetry-and-evidence.md` | `session-plans/session-04-telemetry-and-evidence.md`, `session-plans/session-07-telemetry-evidence-part-2.md` |
-| 0.6 | Documentation System | ⏳ | — | `session-plans/session-05-documentation-system.md` |
-| MP | Mini-Projects (14.1–14.3) | ⏳ | — | `session-plans/session-06-mini-projects-and-capstone.md` |
-| CP | Capstone (§15) | ⏳ | — | `session-plans/session-06-mini-projects-and-capstone.md` |
+| 0.4 | Vulnerable Target Zone | 🔄 | `notes/07-nmap-reconnaissance.md`, `notes/08-target-deployment-and-isolation.md` | `session-03-review-and-targets.md`, `session-08-target-zone-completion.md` |
+| 0.5 | Telemetry and Evidence Zone | ✅ | `notes/09-telemetry-and-evidence.md` | `session-04-telemetry-and-evidence.md`, `session-07-telemetry-evidence-part-2.md` |
+| 0.6 | Documentation System | ✅ | — | `session-05-documentation-system.md` |
+| MP.1 | Lab Architecture Package | ⏳ | — | `session-09-lab-architecture-package.md` |
+| MP.2 | Isolation Verification Report | ⏳ | — | `session-10-isolation-verification-report.md` |
+| MP.3 | Evidence Pipeline Starter | ⏳ | — | `session-11-evidence-pipeline.md` |
+| CP | Capstone (§15) | ⏳ | — | `session-12-capstone.md` |
 
 ## Mini Projects (from roadmap §14)
 

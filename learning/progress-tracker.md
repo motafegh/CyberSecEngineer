@@ -8,7 +8,7 @@
 ---
 
 ## Phase 0 — Secure Lab and Cyber Range
-**Status:** 🔄 Modules 0.1–0.3 ✅ | 0.4 🔄 (DVWA deployed + scanned; WebGoat/JuiceShop pending) | 0.5 ✅ (bind mounts, tcpdump, Apache logs, naming convention, evidence rules all done) | 0.6 ⏳
+**Status:** 🔄 Modules 0.1–0.3 ✅ | 0.4 🔄 (DVWA deployed + scanned; WebGoat/JuiceShop pending) | 0.5 ✅ (bind mounts, tcpdump, Apache logs, naming convention, evidence rules all done) | 0.6 🔄 (chunks 1-3 done: dirs, diagram, ADR-001; chunks 4-5 pending)
 **Modules:** 6 + capstone (0.1–0.3 ✅, 0.4 🔄, 0.5 🔄, 0.6 ⏳, capstone ⏳)
 **Detail:** `learning/phases/phase-0-secure-lab/phase-0-progress-tracker.md`
 
