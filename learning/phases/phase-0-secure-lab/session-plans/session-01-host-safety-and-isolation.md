@@ -2,7 +2,7 @@
 
 > **Roadmap ref:** `PHASE-0-SECURE-LAB.md` §8–9 (Modules 0.1 + 0.2)
 > **Date:** 2026-06-29
-> **Status:** [~] In progress — Chunks 1-4 completed, Chunks 5-6 deferred
+> **Status:** [x] Done — Chunks 1-4 completed, Chunks 5-6 deferred (QEMU/libvirt not available on WSL2; Docker isolation verified instead)
 
 ---
 
@@ -393,6 +393,6 @@ ip addr show virbr0
 
 ---
 
-## Next Session
+## Next Session (what actually followed)
 
-**Session 2 — Phase 0, Module 0.3–0.4: Kali Workstation & Vulnerable Targets**: Set up Kali as the attack workstation in Docker, deploy vulnerable targets, practice network isolation.
+**Session 2 — Phase 0, Module 0.3–0.4: Kali Workstation & Vulnerable Targets**: Set up Kali as the attack workstation in Docker. Targets deferred to Session 3.

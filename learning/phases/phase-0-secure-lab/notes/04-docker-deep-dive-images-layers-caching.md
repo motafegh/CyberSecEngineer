@@ -43,10 +43,25 @@ docker run -it --user analyst kali-lab:with-msf
 
 When a container runs, Docker adds a **thin writable layer** on top of the image layers. This is Copy-on-Write (CoW):
 
+**Concept Box — Copy-on-Write (CoW)**
+
+CoW is a space-saving strategy used by Docker's storage driver (overlay2). The idea: **don't copy data until you must**. When a container reads a file from an image layer, Docker reads it directly from that read-only layer — zero copying. When the container needs to modify that file, Docker copies it from the read-only layer into the container's dedicated writable layer, then applies the modification there. The original file in the image layer stays untouched.
+
+This means:
+- Multiple containers from the same image share ALL image layers in memory — 10 containers running `kali-lab:with-msf` use the same 3.5 GB of image layers once, not 35 GB
+- The writable layer per container is tiny (typically a few MB) unless you create or modify files
+- `docker commit` converts that writable layer into a new image layer, preserving changes
+
 - Read a file → Docker reads from the image layer (fast, no copy)
 - Modify a file → Docker copies it UP to the writable layer, then modifies it there (slower, only on write)
 - Delete a file → Docker places a "whiteout" marker in the writable layer (file appears gone, but still exists in the image layer below)
 - Create a new file → Stored entirely in the writable layer
+
+**Concept Box — Whiteout Marker**
+
+The overlay filesystem (used by Docker's overlay2 driver) doesn't support true deletion from read-only lower layers. When you delete a file in a container, Docker creates a **character device node** with major/minor number 0/0 in the writable layer at the same path. This is called a whiteout. When the filesystem reads the directory, it sees the whiteout marker in the top layer and skips the underlying file — the file is effectively hidden, but still occupies space in the image layer below.
+
+This has a practical consequence: deleting a large file from a running container does NOT reclaim space from the image layers. The file still exists in every layer, and the image size doesn't decrease. The only way to truly remove a file is to build a new image without it.
 
 **Critical implication:** If you `exit` and `docker run` again from the same image, you get a **fresh** writable layer. All changes from the previous session are gone (unless you committed).
 
@@ -111,6 +126,20 @@ RUN apt update && apt install -y nmap && apt clean && rm -rf /var/lib/apt/*
 ### Layer Caching
 
 Docker caches each layer after a successful build by its **instruction hash** (the exact text of the RUN command + the previous layer's hash).
+
+**Concept Box — Instruction Hash (How Docker Decides to Cache or Rebuild)**
+
+When Docker processes a Dockerfile, it computes a content hash for each instruction:
+- For `RUN apt install nmap`: the hash includes `apt install nmap` + the hash of the previous layer
+- For `COPY ./tools /tools`: the hash includes the file contents AND metadata (permissions, timestamps) of `./tools/`
+
+If the hash matches a layer from a previous build, Docker reuses the cached layer instead of re-executing the instruction. If the hash differs — even by one character or one byte in a copied file — Docker invalidates that layer AND all subsequent layers (they must be rebuilt from scratch).
+
+This is why:
+- Changing the order of `apt install` packages busts the cache (different instruction text)
+- Adding a comment to a RUN command busts the cache (even `#` changes the text)
+- `COPY` before `RUN apt install` means: if any copied file changes, you re-download all apt packages
+- `RUN apt update && apt install` always includes the command text, NOT the apt cache state — so identical runs still execute if the previous layer hash is different
 
 ```bash
 docker build -t my-image .  # Layer 0 → Layer 1 → Layer 2 → Layer 3 → DONE

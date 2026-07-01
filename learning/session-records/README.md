@@ -5,9 +5,12 @@ This folder tracks every learning session: what was planned, what was built, and
 ## Index
 
 | Session | Date | Phase | Topic | Status |
-|---|---|---|---|---|
+|---|---|---|---|---|---|
 | [SESSION-001.md](SESSION-001.md) | 2026-06-25 | Phase 0 | Kickoff & Roadmap Orientation (v2-era plan) | 🟢 Complete (historical) |
 | [SESSION-002.md](SESSION-002.md) | 2026-06-25 | Phase 1 | Foundations — Theory & Concepts (no lab access) | 🟢 Complete (historical) |
+| [SESSION-003.md](SESSION-003.md) | 2026-06-29 | Phase 0 | Host Safety, Isolation, Docker Networks | 🟢 Complete (historical) |
+| [SESSION-004.md](SESSION-004.md) | 2026-06-29 | Phase 0 | Kali Attack Workstation Build | 🟢 Complete (historical) |
+| [SESSION-005.md](SESSION-005.md) | 2026-06-30 | Phase 0 | Target Deployment, Connectivity Matrix, nmap Recon | 🟢 Complete (historical) |
 
 ---
 

@@ -161,6 +161,19 @@ dpkg-deb: error: unexpected end of file in archive
 
 ### Attempt 6: Source compile via `git clone` + `bundle install`
 
+**Concept Box — What Are Ruby Native Extensions?**
+
+Most Ruby gems are pure Ruby — just `.rb` files that Ruby interprets at runtime. But some gems need to talk to hardware (capture network packets), or C libraries (parse YAML, connect to PostgreSQL), or the OS kernel. These gems include **C source files** that must be **compiled** into a `.so` (shared object) file — a native binary — when you install the gem.
+
+The process:
+1. RubyGems runs the gem's `extconf.rb` script
+2. This script checks which C headers are on the system (e.g., `yaml.h`, `libpq-fe.h`)
+3. It generates a `Makefile`
+4. `make` runs `gcc` to compile the C code into a `.so` file
+5. Ruby can `require` that `.so` file as if it were a Ruby file
+
+**Why this matters for Docker:** The `-dev` packages (`libyaml-dev`, `libffi-dev`, `libpq-dev`) install the **C header files** needed for step 2. Without them, compilation fails with errors like `yaml.h not found`. These headers are NOT included in the runtime packages (`libyaml-0-2`, `libffi8`, `libpq5`) — you must explicitly install the `-dev` variants at build time. You can remove them afterward to save space since the compiled `.so` files don't need the headers at runtime.
+
 **Command (the one that worked):**
 ```bash
 git clone --depth 1 https://github.com/rapid7/metasploit-framework /opt/metasploit-framework

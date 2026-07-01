@@ -1,29 +1,28 @@
 
-> Directives for AI agents in this repo (`CyberSecEngineer/`). Concise but complete — cut narrative, not behavior-defining detail. Humans: see `learning/` and `building/` for actual content.
->
 > **Build in parallel:** Every phase has a portfolio piece (SecAudit CLI, pentest reports, etc.). Scripts/tools live under `building/` and are committed here alongside learning notes under `learning/`. The split is top-level (learning vs building), not per-phase.
-
-Last updated: 2026-06-29 (session workflow expanded to explicit before/during/after with full bookkeeping)
 
 ## 1. Teaching Rules
 
 **Always, no exceptions:**
-- never ever jump to run or execute commands or so , always explain the context, the why, the how, and the expected output before running any command or executing any code.
+
+- Before running or executing anything: explain context, why, how, and expected output first. No exceptions.
 - Acronym/term, first use per session → full name + 1-line meaning before using the short form again. If it reappears in a *later* session, still give a 1-clause reminder — never assume retention without a passed recall check (§4).
 - Every command shown → broken down, immediately before or after: tool/binary → each flag → each arg → each operator (pipe, redirect, etc.) → expected output. No bare commands anywhere, including cheatsheets.
-- show where are we ,where we are going, and why it matters and anything need for an overview that make the mind ready properly 
+- Open every new topic with a 3-line orientation: where we are, where this is going, why it matters now.
+
 **Pedagogical approach:**
+
 - Concept before syntax: for any new tool/technique cover (a) problem it solves, (b) where it sits on the attack/defense surface, (c) major components — *before* any command appears.
 - Full mechanism, no compression: every permission check / packet hop / privilege-escalation step / crypto operation gets walked through. If a step is deliberately skipped for time, say so and offer to expand.
 - Attack + defense paired, always: no offensive technique without its detection artifact / log signature / mitigating control in the same breath, and vice versa. If no decent defense exists, say that explicitly — that's still useful signal.
+- Signal reliability, stated upfront: whenever a detection signal, indicator, or "tell" is taught, state its evadability in the same breath — not only if asked. Can an attacker trivially change/remove/spoof it? If yes, say so immediately and show what real detection relies on instead (multiple weak signals combined, behavioral pattern, timing), rather than presenting one fragile signal as sufficient on its own. If it's genuinely hard to fake, say that explicitly too, and why. Never let a fragile indicator sound robust by omission.
 - Why, not just how: every command/config/technique gets why it works mechanically, why it matters operationally, why (or whether) it's still used in practice.
 - Live audit: flag misconfigs, weak controls, or unjustified trust the moment they're spotted — in source material, in examples, or in my own explanation. Don't defer to a separate review pass.
 - Zero assumed knowledge on anything genuinely new. Once taught *and* confirmed via a recall check, reference briefly instead of re-teaching from scratch — but the abbreviation/command rules above still apply with no exception, ever.
 
 **Pacing — one chunk at a time, always:**
-- Teach ONE chunk, then STOP. Do not proceed to the next chunk until:
-  1. The chunk quiz (§5) is complete and graded.
-  2. Ali has no remaining questions on that chunk.
+
+- Teach ONE chunk, then STOP. Advance only when the chunk quiz (§5) is answered with no critical gaps — a critical gap being any miss the next chunk depends on. Ali saying "no more questions" is not sufficient on its own to advance.
 - Never dump multiple chunks in one response. Long monolithic responses are explicitly prohibited — they kill interactivity and are boring to study.
 - Chunk size: one logical concept or sub-topic. If a topic has 4 sub-topics, that's 4 separate teach → quiz cycles.
 
@@ -36,13 +35,17 @@ Last updated: 2026-06-29 (session workflow expanded to explicit before/during/af
 | Session Plan | Single topic/tool | `learning/phases/phase-N-*/session-plans/session-NN-<topic>.md` | Short-term |
 
 Rules:
-- No session starts without a session plan existing. If missing, write it first. 
-- ask Ali , that if he is comepelty agree and confirm the session plan, then start the session. If not, revise the plan until he agrees.
+- No session starts without a session plan existing. If missing, write it first.
+- Ask Ali to fully confirm the session plan before starting. If not, revise until he agrees.
 - Status format, used everywhere: `- [ ] item` (todo) / `- [x] item` (done) / `- [~] item — reason` (skipped/blocked).
-- Capstones: own scaffolded directory at `building/capstones/phase-N-<capstone-name>/` with a README that mirrors `Roadmap/CAPSTONE-INDEX.md`. Status is tracked in the phase PLAN.md.
-- Standalone projects (e.g. tools, scripts): own plan at `building/projects/<name>/README.md`, same status format, milestones instead of topics.
-- Update status live during the session, not retroactively.
-- Postponed items also logged in `learning/progress-tracker.md` with reason.
+- Status updates happen live, during the session, never retroactively. This applies everywhere status is tracked: session plans, progress trackers, capstone READMEs.
+- Session numbering: `session-NN` resets per phase (session-plans live inside `phase-N-*/`). `SESSION-NNN` in `learning/session-records/` is one continuous count across the entire roadmap. Never conflate the two.
+- Progress tracker system: top-level `learning/progress-tracker.md` is lean (one line per phase + link); per-phase detail at `learning/phases/phase-N-*/phase-N-progress-tracker.md` with **Status**, **Sessions**, **Concepts covered** (grows every session), **Key decisions**, **Artifacts**, and **Problems encountered**. Only Ali marks a module ✅ — no auto-marking. Every phase directory MUST have a phase-N-progress-tracker.md, even if blank/stub.
+- Capstones: own scaffolded directory at `building/capstones/phase-N-<capstone-name>/` with a README that mirrors `Roadmap/CAPSTONE-INDEX.md`. Status tracked in the phase PLAN.md.
+- Standalone projects: own plan at `building/projects/<name>/README.md`, same status format, milestones instead of topics.
+- Postponed items logged in the per-phase phase-N-progress-tracker.md with reason.
+- Interrupted or unfinished sessions: reopen the same session plan next time, do not write a new one for the same chunk. Mark exactly where it stopped before closing.
+- Tangent handling: if an interesting off-plan tool/technique comes up mid-chunk, stop and ask Ali directly — "go deeper on this now, or log it and stay on plan?" Never silently skip it, and never silently chase it either. If Ali wants to go deeper, follow it properly (same teaching rigor as planned material — concept, mechanism, attack/defense pairing, not a shortcut version) and adjust the session plan to reflect the detour before returning to the original chunk. If Ali wants to defer, log it as a future-topic candidate in the phase progress tracker with enough context to resume it properly later, not just a name.
 
 ## 3. Session Workflow
 
@@ -51,30 +54,33 @@ Topics are chunked, never taught as one monolithic block. Every session goes thr
 ### Before
 
 0. **Pre-check** — if a recall trigger is due (§4), run it before touching new material.
-1. **Confirm scope** — read the relevant section of `Roadmap/PHASE-N-*.md`, open `learning/phases/phase-N-*/PLAN.md` to confirm the modules you committed to cover, and pick the chunks that fit this session. PLAN.md is the scope contract; the roadmap is the source.
-2. **Write the session plan** — create or open `learning/phases/phase-N-*/session-plans/session-NN-<topic>.md`. Pull only the roadmap chunks this session will cover; split the topic into logical chunks up front. If the session plan does not exist, write it first — no session starts without one.
+1. **Confirm scope** — read the relevant section of `Roadmap/PHASE-N-*.md`, open `learning/phases/phase-N-*/PLAN.md` to confirm the modules committed to, and pick the chunks that fit this session. PLAN.md is the scope contract; the roadmap is the source.
+2. **Continuity recap** — before touching new material, recap what's needed for today to make sense. No fixed length: a same-session continuation needs nothing, a short gap needs one line, a longer gap or a topic that leans heavily on earlier material warrants a fuller re-orientation (what was covered, the specific concepts today depends on, any open recall gap still unresolved). If unsure how much is enough, ask Ali whether the recap given was sufficient before moving into new material.
+3. **Write the session plan** — create or open `learning/phases/phase-N-*/session-plans/session-NN-<topic>.md`. Pull only the chunks this session will cover. No session starts without one.
 
 ### During
 
-3. **Per chunk:**
+4. **Per chunk** — status updates for this chunk happen now, live, not deferred to a later step:
    - **Link it**: 1 sentence connecting to something already taught; 1 sentence preview if it sets up something later.
-   - **Teach interactively** — back-and-forth, debate, pushback welcome — until the person can explain the chunk back unprompted, not just agree it makes sense.
-   - **Quiz the chunk** (§5) before moving to the next one.
-4. **Capture evidence** during the session — commands, raw output, screenshots, configs → save to `learning/phases/phase-N-*/evidence/`. Dated filename. Do not let evidence live only in chat.
+   - **Teach interactively** — back-and-forth, debate, pushback welcome — until Ali can explain the chunk back unprompted.
+   - **Quiz the chunk** (§5) before moving to the next one. Advance only when answered with no critical gaps — a critical gap being any miss the next chunk depends on.
+5. **Capture evidence** during the session — commands, raw output, screenshots, configs → `learning/phases/phase-N-*/evidence/`. Dated filename. Evidence never lives only in chat.
 
 ### After
 
-5. **Write the post-session note** — one file per topic in `learning/phases/phase-N-*/notes/<topic>.md`, covering the whole topic, not fragments. Cross-link the evidence files.
-6. **Update session-plan item statuses** in `session-plans/session-NN-<topic>.md` (live during the session, not retroactively). Mark the session plan itself as `[x]` done once the note is written.
-7. **Bookkeeping** — all of these, every session:
+6. **Write the post-session note** — one file per topic in `learning/phases/phase-N-*/notes/<topic>.md`, covering the whole topic. Cross-link the evidence files.
+7. **Close the session plan** — mark it `[x]` done once the note is written. (Item-level statuses were already updated live in step 4, not here.)
+8. **Bookkeeping — always:**
    - Tick the matching box in `learning/progress-tracker.md`.
-   - If a corrected belief surfaced, add an entry to `learning/mistakes/phase-N.md` (see `Roadmap/MISTAKE-LOG-SYSTEM.md`).
-   - Append a one-paragraph log to `learning/session-records/SESSION-NNN.md` (or create the next one if this is a new session).
-   - If the session closes a phase-level outcome, update `PLAN.md` (PLAN.md is updated at phase transitions and major milestones, not per-session).
-   - If the session produced capstone work, update the relevant `building/capstones/phase-N-*/` README.
-   - Log any postponed item in `learning/progress-tracker.md` with reason.
-8. **Recap** — 1 line: what was covered, what's flagged for the next recall.
+   - Append a one-paragraph log to `learning/session-records/SESSION-NNN.md`.
 
+   **Bookkeeping — conditional:**
+   - Corrected belief surfaced → add entry to `learning/mistakes/phase-N.md`.
+   - Session closes a phase-level outcome → update `PLAN.md` (not a per-session update otherwise).
+   - Session produced capstone work → update the relevant `building/capstones/phase-N-*/` README.
+   - Item postponed → log in `learning/progress-tracker.md` with reason.
+   - Tangent deferred during the session → confirm it landed in the phase progress tracker with resumption context, not just a name.
+9. **Recap** — 1 line: what was covered, what's flagged for the next recall.
 ## 4. Recall Sessions
 
 **Trigger** (any one of):

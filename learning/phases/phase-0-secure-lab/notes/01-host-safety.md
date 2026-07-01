@@ -3,7 +3,7 @@
 > **Session:** Session 1 (2026-06-29)
 > **Roadmap ref:** `PHASE-0-SECURE-LAB.md` §8–9 (Modules 0.1 + 0.2)
 > **Evidence:** `evidence/2026-06-29-session-1-docker-isolation.txt`
-> **Session plan:** `session-plans/session-01-host-safety.md`
+> **Session plan:** `session-plans/session-01-host-safety-and-isolation.md`
 
 ---
 
@@ -108,6 +108,27 @@ docker info | head -5
 ### 2.1 Containers vs Virtual Machines
 
 This is the most important distinction in lab architecture.
+
+**Concept Box — What Are Namespaces and cgroups?**
+
+Docker uses two Linux kernel features to isolate containers:
+
+**Namespaces** give a container its own view of the system. There are 8 types:
+- **PID namespace** — container sees only its own processes (PIDs 1, 2, 3...), NOT host processes
+- **Network namespace** — container has its own interfaces, IPs, routing table, firewall rules
+- **Mount namespace** — container has its own filesystem mount points (what you see at `/` inside is NOT the host's root)
+- **UTS namespace** — container has its own hostname (the `--name` flag)
+- **IPC namespace** — container has its own inter-process communication channels
+- **User namespace** — container can map its root (UID 0) to a non-privileged user on the host
+- **Cgroup namespace** — container sees only its own cgroup hierarchy
+- **Time namespace** — container can have its own system time (rarely used)
+
+**cgroups (control groups)** limit how much of a resource a container can use:
+- `memory.max` — limit RAM (e.g., `--memory=512m`)
+- `cpu.max` — limit CPU cores (e.g., `--cpus=1.5`)
+- `io.max` — limit disk read/write speed
+
+Together, namespaces say "what you can see" and cgroups say "what you can use." They are the two pillars of container isolation — software-defined boundaries, NOT hardware boundaries like VMs.
 
 | Aspect | Docker Container | Full Virtual Machine |
 |---|---|---|
@@ -296,6 +317,17 @@ Every lab session needs at least two Docker networks:
 ```bash
 docker network create --driver bridge --internal lab-net-internal
 ```
+
+**Concept Box — What Is a Layer-2 Switch?**
+
+The OSI (Open Systems Interconnection) model splits networking into 7 layers. Layer 2 (Data Link) deals with **MAC addresses** — hardware addresses burned into each network interface. A Layer-2 switch:
+1. Receives a frame on one port
+2. Reads the destination MAC address
+3. Looks up which port that MAC is connected to (its MAC address table)
+4. Forwards the frame only to that port — NOT to all ports
+5. If it doesn't know the MAC, it floods to all ports (except the source)
+
+Docker's bridge driver creates a **virtual** Layer-2 switch inside the host kernel. Containers attached to the same bridge are on the same broadcast domain — they can ARP for each other's MACs and exchange frames directly. Two different bridge networks are completely separate Layer-2 domains — frames never cross.
 
 **Command breakdown:**
 

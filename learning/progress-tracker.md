@@ -1,74 +1,37 @@
 # Progress Tracker
 
-> Master status across the current roadmap.
-> Roadmap source of truth: `Roadmap/ROADMAP-INDEX.md`
-> 🔄 = In Progress | ⏳ = Planned | ✅ = Complete | ⏸️ = Postponed (with note)
+> Master status — phase-level only.
+> Per-phase detail: `learning/phases/phase-N-name/phase-N-progress-tracker.md`
+> Roadmap source: `Roadmap/ROADMAP-INDEX.md`
+> Only Ali marks modules/phases complete — no auto-marking.
 
 ---
 
 ## Phase 0 — Secure Lab and Cyber Range
-
-| Module | Status | Notes |
-|---|---|---|
-| 0.1 — Host Workstation Safety | ✅ | Session 1 complete — trust model, safety checklist, Docker isolation |
-| 0.2 — Virtualization and Isolation | ✅ | Docker networks created and tested; QEMU/VMs deferred (WSL2 limitation) |
-| 0.3 — Linux Attack/Defense Workstation | ✅ | Session 2 complete — Kali image with 22 tools + msf 6.4.142, non-root analyst user |
-| 0.4 — Vulnerable Target Zone | ⏳ | |
-| 0.5 — Telemetry and Evidence Zone | ⏳ | |
-| 0.6 — Documentation System | ⏳ | |
-| Capstone — Local Secure Cyber Range | ⏳ | |
-
----
+**Status:** 🔄 Modules 0.1–0.3 ✅ | 0.4 🔄 (DVWA deployed + scanned; WebGoat/JuiceShop pending) | 0.5 ✅ (bind mounts, tcpdump, Apache logs, naming convention, evidence rules all done) | 0.6 ⏳
+**Modules:** 6 + capstone (0.1–0.3 ✅, 0.4 🔄, 0.5 🔄, 0.6 ⏳, capstone ⏳)
+**Detail:** `learning/phases/phase-0-secure-lab/phase-0-progress-tracker.md`
 
 ## Phase 1 — Deep Technical Foundations
-
-| Module | Status | Notes |
-|---|---|---|
-| 1.1 — Linux and OS Security | ⏳ | |
-| 1.2 — Networking and Packet Analysis | ⏳ | |
-| 1.3 — Cryptography and Key Management | ⏳ | |
-| 1.4 — Python for Security Automation | ⏳ | |
-| 1.5 — Go for Networked and Distributed Services | ⏳ | |
-| 1.6 — Rust for Secure Systems Programming | ⏳ | |
-| 1.7 — Authentication, Authorization, Identity | ⏳ | |
-| 1.8 — Threat Modeling Fundamentals | ⏳ | |
-| 1.9 — Security Research and Field Intelligence | ⏳ | |
-| Capstone — Foundation Security Toolkit | ⏳ | |
-
----
+**Status:** ⏳ Not started
+**Detail:** `learning/phases/phase-1-deep-foundations/phase-1-progress-tracker.md`
 
 ## Phase 2 — Core Security Engineering
-| Module | Status |
-|---|---|
-| (all modules) | ⏳ |
+**Status:** ⏳ Not started
+**Detail:** `learning/phases/phase-2-core-security-engineering/phase-2-progress-tracker.md`
 
-## Phase 3 — Distributed, Cloud, Zero Trust
-| Module | Status |
-|---|---|
-| (all modules) | ⏳ |
+## Phase 3 — Distributed / Cloud / Zero Trust
+**Status:** ⏳ Not started
+**Detail:** `learning/phases/phase-3-distributed-cloud-zerotrust/phase-3-progress-tracker.md`
 
-## Phase 4 — Blockchain and Web3 Security
-| Module | Status |
-|---|---|
-| (all modules) | ⏳ |
+## Phase 4 — Blockchain / Web3 Security
+**Status:** ⏳ Not started
+**Detail:** `learning/phases/phase-4-blockchain-web3-security/phase-4-progress-tracker.md`
 
-## Phase 5 — AI Security and AI-Driven Defense
-| Module | Status |
-|---|---|
-| (all modules) | ⏳ |
-
-## Phase 6 — Principal Secure Architecture
-| Module | Status |
-|---|---|
-| (all modules) | ⏳ |
+## Phase 5 — AI Security / Capstone
+**Status:** ⏳ Not started
+**Detail:** `learning/phases/phase-5-ai-security/phase-5-progress-tracker.md`
 
 ---
 
-## Legend
-
-| Symbol | Meaning |
-|---|---|
-| 🔄 | In progress — currently working on this |
-| ⏳ | Planned — scheduled for an upcoming session |
-| ✅ | Complete — exit criteria met |
-| ⏸️ | Postponed — intentionally skipped for now |
+*Legend: ✅ = Complete | ⏳ = Planned | 🔄 = In progress | ⏸️ = Postponed*

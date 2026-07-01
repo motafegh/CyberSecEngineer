@@ -3,7 +3,7 @@
 **Date:** 2026-06-29  
 **Phase:** Phase 0 — Secure Lab and Cyber Range  
 **Modules:** 0.1 (Host Workstation Safety), 0.2 (Virtualization and Isolation)  
-**Session plan:** `learning/phases/phase-0-secure-lab/session-plans/session-01-host-safety.md`  
+**Session plan:** `learning/phases/phase-0-secure-lab/session-plans/session-01-host-safety-and-isolation.md`  
 **Learning note:** `learning/phases/phase-0-secure-lab/notes/01-host-safety.md`  
 **Evidence:** `learning/phases/phase-0-secure-lab/evidence/2026-06-29-session-1-docker-isolation.txt`
 

@@ -1,0 +1,30 @@
+Connectivity Matrix — Phase 0 Lab
+Date: 2026-06-30
+
+Networks:
+  lab-net-nat (172.18.0.0/16) — internet access via NAT
+  lab-net-internal (172.19.0.0/16) — --internal, no gateway
+
+Containers:
+  kali: eth0=172.18.0.2 (NAT), eth1=172.19.0.3 (internal)
+  dvwa: eth0=172.19.0.2 (internal only)
+
+Tests:
+
+  Kali → Internet (8.8.8.8):        ✅ 64 bytes, 129ms
+  Kali → DVWA (by name):            ✅ 64 bytes, 0.072ms
+  Kali → DVWA (by IP):              ✅ dvwa = 172.19.0.2
+
+  Host → DVWA (localhost:80):       ❌ No service (curl failed)
+  Host → DVWA (by IP 172.19.0.2):   ✅ Reachable (Docker bridge property)
+  Host → Kali (by IP 172.18.0.2):   ✅ Reachable (Docker bridge property)
+
+  DVWA → Internet (8.8.8.8):        ❌ "Network is unreachable" (kernel-level, --internal)
+  DVWA → Kali (by IP 172.19.0.3):   ✅ 64 bytes, 0.063ms
+
+  Kali → DVWA (HTTP):               Not yet tested (nmap/service test pending)
+
+Findings:
+- Host can reach container IPs on both bridges. Isolation relies on no port
+  mapping + --internal egress block, not on host-to-container IP blocking.
+- All egress from internal network is blocked at kernel routing level.

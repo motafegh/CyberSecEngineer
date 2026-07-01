@@ -153,6 +153,27 @@ none              null      local    ← No network (not used)
 
 ### How Traffic Routing Works
 
+**Concept Box — CIDR Notation (What Does `/16` Mean?)**
+
+CIDR (Classless Inter-Domain Routing) notation is a shorthand for specifying an IP address range. The format is `base_ip/prefix_length`:
+
+- The base IP (`172.18.0.0`) is the start of the range
+- The prefix length (`/16`) says how many bits of the IP address are **fixed** (the network portion)
+- The remaining bits (32 - prefix_length) define the **host portion** — the available addresses
+
+`172.18.0.0/16` broken down:
+- Binary: `172.18.0.0` = `10101100.00010010.00000000.00000000`
+- `/16` means the first **16 bits** (two octets) are the network: `10101100.00010010`
+- The last **16 bits** (two octets) are for hosts: `00000000.00000000`
+- Available addresses: 2^16 = 65,536 addresses (from `172.18.0.0` to `172.18.255.255`)
+- Docker automatically assigns IPs from this pool when you attach containers to the network
+
+Common CIDR sizes:
+- `/24` = 256 addresses (home networks — `192.168.1.0/24`)
+- `/16` = 65,536 addresses (large networks — Docker's default bridge size)
+- `/8` = 16.7 million addresses (huge networks — `10.0.0.0/8`)
+- `/32` = 1 address (a single host — used in routing for specific IPs)
+
 When Kali runs `nmap 172.18.0.2` (DVWA on internal network):
 
 ```

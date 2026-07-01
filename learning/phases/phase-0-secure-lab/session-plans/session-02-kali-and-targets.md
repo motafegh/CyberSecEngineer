@@ -101,6 +101,7 @@ A containerized Kali means you can destroy it, rebuild it, and start fresh insta
 - Container: `tleemcjr/metasploitable2`
 - Network: `lab-net-internal` (no internet)
 - Ports: 21 (FTP), 22 (SSH), 23 (Telnet), 25 (SMTP), 80 (HTTP), 445 (SMB), etc.
+- ⚠️ **Deferred** — not deployed. Focus shifted to WebGoat and Juice Shop (modern stacks) instead of Metasploitable (legacy).
 
 ---
 
@@ -142,20 +143,27 @@ A connectivity matrix document (`building/labs/CONNECTIVITY-MATRIX.md`) that map
 
 ---
 
-## What We'll Produce by End of Session
+## What Was Produced (actual)
 
-| Artifact | Location |
-|---|---|
-| Kali Dockerfile | `building/labs/compose/kali/Dockerfile` |
-| Docker Compose for lab | `building/labs/compose/docker-compose.yml` |
-| Target inventory | `building/labs/TARGET-INVENTORY.md` |
-| Connectivity matrix | `building/labs/CONNECTIVITY-MATRIX.md` |
-| Sample evidence | `building/labs/evidence/*` |
-| Learning note | `notes/02-kali-and-targets.md` |
-| Evidence file | `evidence/2026-06-29-session-2-target-deployment.txt` |
+| Artifact | Actual Location | Notes |
+|---|---|---|
+| Kali Dockerfile | `building/labs/compose/kali/Dockerfile` | ✅ Built |
+| Kali image: `kali-lab:with-msf` | Committed, 3.51 GB | ✅ Has msf |
+| Kali image: `kali-lab:latest` | From Dockerfile, 2.53 GB | ✅ 22 tools, no msf |
+| Connectivity matrix | `evidence/2026-06-30-connectivity-matrix.txt` | ✅ Done in Session 3 |
+| Learning note | `notes/06-current-lab-state-and-architecture.md` | ✅ Architecture doc |
+| Docker Compose | Not created | ⏳ Deferred — not needed yet |
+| Target inventory | Not created | ⏳ Planned for Session 5 (M0.6) |
+| Target deployment note | `notes/08-target-deployment-and-isolation.md` | ✅ Written in Session 3 |
 
 ---
 
-## Next Session
+## Next Sessions (what actually followed)
 
-**Session 3 — Phase 0, Module 0.5–0.6:** Telemetry and evidence pipeline, documentation system, Architecture Decision Record, lab threat model.
+**Session 3 — Phase 0, Module 0.4:** Review, deploy DVWA, connectivity matrix, nmap scan. Targets deferred to Session 3 scope.
+
+**Session 4 — Phase 0, Module 0.5:** Telemetry and evidence pipeline — bind mounts, tcpdump, logs, evidence conventions.
+
+**Session 5 — Phase 0, Module 0.6:** Documentation system — ADR, threat model, diagrams, recall checklist.
+
+**Session 6 — Phase 0 Mini-Projects + Capstone:** Synthesize everything into final artifacts.
