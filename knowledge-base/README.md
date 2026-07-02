@@ -1,41 +1,111 @@
 # Cyber Security Engineering Knowledge Base
 
-Welcome to the project's structured knowledge base.
+## Vision
+Build a long-term engineering knowledge system that grows from beginner foundations to principal security architecture. The repository should become a personal handbook, design reference, laboratory journal, and architectural decision record.
 
-## Purpose
-This directory serves as a long-term engineering knowledge system rather than a collection of notes.
+## Long-Term Goals
+- Learn from first principles.
+- Capture reasoning, not just facts.
+- Connect concepts across phases.
+- Record mistakes and refined mental models.
+- Build reusable references instead of duplicated notes.
+- Finish the roadmap with a publishable engineering knowledge base.
 
-## Structure
+## Repository Structure
+- phase-1/ : Deep Foundations
+- phase-2/ : Core Security Engineering
+- phase-3/ : Distributed Systems, Cloud & Zero Trust
+- phase-4/ : Blockchain & Web3 Security
+- phase-5/ : AI Security
+- phase-6/ : Principal Secure Architecture
+- architecture/
+- security/
+- glossary/
+- labs/
+- cheat-sheets/
+- command-reference/
+- interview-prep/
+- capstones/
+- templates/
 
-- phase-1/          : Deep Foundations
-- phase-2/          : Core Security Engineering
-- phase-3/          : Distributed Systems, Cloud & Zero Trust
-- phase-4/          : Blockchain & Web3 Security
-- phase-5/          : AI Security
-- phase-6/          : Principal Secure Architecture
-- architecture/     : Architecture principles, ADRs and patterns
-- security/         : Security principles and threat models
-- glossary/         : Engineering glossary
-- labs/             : Practical laboratories
-- cheat-sheets/     : Quick references
-- command-reference/: Linux, networking and tooling references
-- interview-prep/   : Review material
-- capstones/        : Phase capstone projects
-- templates/        : Reusable document templates
+## Documentation Philosophy
+Every document should answer:
+1. What is it?
+2. Why does it exist?
+3. How does it work?
+4. Why was it designed this way?
+5. What security implications does it have?
+6. How does it relate to previous concepts?
+7. What common misconceptions exist?
+8. Where will this concept appear again later?
 
-## Documentation Standards
-Every lesson should include:
-1. Learning Objectives
-2. Core Concepts
-3. Engineering Reasoning
-4. Architecture Principles
-5. Security Perspective
-6. Commands
-7. Common Misconceptions
-8. Discussions
-9. Summary
-10. Recall Questions
-11. Related Topics
-12. Next Lesson
+## Lesson Standard
+Each lesson should contain:
+- Learning Objectives
+- Prerequisites
+- Core Concepts
+- Mental Models
+- Engineering Reasoning
+- Architecture Principles
+- Security Perspective
+- Commands with sample output
+- Discussions & Design Debates
+- Common Misconceptions
+- Summary
+- Recall Questions
+- Related Topics
+- Next Lesson
 
-This knowledge base is intended to evolve alongside the roadmap and become a personal Cyber Security Engineering handbook.
+## Knowledge Categories
+### Knowledge
+Definitions, explanations and mechanisms.
+
+### Principles
+Timeless engineering and security principles.
+
+### Architecture
+Design decisions, patterns, tradeoffs and ADRs.
+
+### Labs
+Hands-on exercises and experiments.
+
+### Glossary
+Precise engineering terminology.
+
+## Teaching Methodology
+- Learn one concept at a time.
+- Distinguish simplified and engineering-level models.
+- Never skip reasoning steps.
+- Encourage debate when it improves understanding.
+- Prefer complete chains of reasoning.
+- Continuously refine previous mental models.
+- Build from first principles.
+
+## Current Roadmap Status
+Completed:
+- Computer fundamentals.
+- RAM vs Storage.
+- Boot process.
+- Firmware.
+- Bootloader.
+- Kernel introduction.
+- Separation of Concerns.
+- Layered Architecture.
+- Principle of Least Privilege.
+
+Next:
+- User Space vs Kernel Space.
+- Processes.
+- Threads.
+- Memory Management.
+- System Calls.
+- Scheduling.
+
+## Repository Evolution Plan
+Phase A: Create the knowledge base framework.
+Phase B: Populate lessons as they are completed.
+Phase C: Extract reusable principles into dedicated references.
+Phase D: Add architecture diagrams, labs, ADRs, glossary and capstones.
+Phase E: Refine into a professional engineering handbook suitable for long-term reference.
+
+This repository is intended to document not only what was learned, but also how understanding evolved over time.
